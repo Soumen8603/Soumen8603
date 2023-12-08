@@ -1,0 +1,65 @@
+#include<iostream>
+using namespace std;
+
+void spiralPrint(int arr[][3],int row,int col){
+int count=0;
+int total=row*col;
+    //initializing index
+    int startingRow=0;
+    int startingCol=0;
+    int endRow=row-1;
+    int endcol=col-1;
+while(count<total){
+    //print starting row
+    for(int index=startingCol;count<total&&index<=endcol;index++){
+        cout<<arr[startingRow][index]<<" ";
+        count++;
+    }
+    startingRow++;
+
+    //print ending column
+for(int index=startingRow;count<total&&index<=endRow;index++){
+    cout<<arr[index][endcol]<<" ";
+    count++;
+}
+endcol--;
+
+//print ending row
+for(int index=endcol;count<total&&index>=startingCol;index--){
+    cout<<arr[endRow][index]<<" ";
+    count++;
+}
+endRow--;
+
+//print starting column
+for(int index=endRow;count<total&&index>=startingRow;index--){
+    cout<<arr[index][startingCol]<<" ";
+    count++;
+}
+startingCol++;
+}
+
+}
+int main()
+{
+    int arr[4][3];
+     for (int row = 0; row < 4; row++)
+    {
+        for (int col = 0; col < 3; col++)
+        {
+            cin >> arr[row][col];
+        }
+    }
+
+     for (int row = 0; row < 4; row++)
+    {
+        for (int col = 0; col < 3; col++)
+        {
+            cout << arr[row][col] << " ";
+        }
+        cout << endl;
+    }
+
+    spiralPrint(arr,4,3);
+    return 0;
+}
